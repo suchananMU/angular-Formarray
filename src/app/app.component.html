@@ -3,3 +3,19 @@
 {{ formGroup.value | json }}
 
 <button (click)="onclick()">click</button>
+<br />
+<div [formGroup]="formGroup">
+  ชื่อ : <input formControlName="name" />
+  <div formArrayName="address">
+    <div
+      *ngFor="
+        let control of formGroup.get('address')['controls'];
+        let i = index
+      "
+    >
+      <div [formGroupName]="i">
+        ที่อยู่ที่{{ i }} : <input formControlName=" AddressName" />
+      </div>
+    </div>
+  </div>
+</div>
